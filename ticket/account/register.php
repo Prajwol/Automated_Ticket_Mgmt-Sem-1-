@@ -1,0 +1,65 @@
+<?php
+session_start();
+// include necessary files
+include_once '../config/connection.php';
+include_once '../includes/engine.php';
+
+// include necessary function
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../resources/css/main.css">
+    <link rel="stylesheet" href="../resources/css/form.css">
+    <link rel="stylesheet" href="../resources/css/global.css">
+
+    <title>Register| Arif Systems</title>
+
+
+</head>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../resources/images/cover.png');background-position: center; background-repeat: no-repeat;background-size: cover;position: relative;min-height:800px;" >
+<!-- Include Navigation -->
+<?php include '../includes/navigation.php' ?>
+
+
+
+    <form action="register.php" class="container fade-in" method="post" >
+    <p class="main-title">REGISTER</p>
+
+    <?php if (!empty($_SESSION['message'])){ ?>
+        <p> <?PHP
+          if(isset($_SESSION['message'])){
+          echo $_SESSION['message'];
+          unset($_SESSION['message']);
+              }
+      ?></p>
+  <?php }else{}	?>
+
+        <p><div><?php include('../includes/errors.php') ?></div></p>
+
+        <!-- <label for="email">Email</label> -->
+        <input type="text" placeholder="First Name" name="first_name"  style="width:49.3%;" >
+        <input type="text" placeholder="Last Name" name="last_name"  style="width:49.3%;" >
+        <input type="email" placeholder="Email Address" name="email" >
+
+        <!-- <label for="psw">Password</label> -->
+        <input type="password" placeholder="Password" name="psw" >
+        <input type="password" placeholder="Confirm Password" name="cpsw" >
+
+        <input type="submit" class="btn-login" name="register" value="Register"></input>
+
+        <div class="link">
+      <p><a href="<?php echo BASE_URL .'/account/login.php'?>">Already have an account? Log in</a></p>
+      
+   </div>
+    </form>
+
+
+
+
+</body>
+<!-- Include js files -->
+<!-- Include Footer content -->
+</html>
